@@ -1,0 +1,58 @@
+<div class="topbar-main">
+    <div class="container active">
+
+        <!-- LOGO -->
+        <div class="topbar-left">
+            <a class="logo">
+
+                <span><img src="styles/images/TrustOne.png" alt="logo" style="height: 46px;"></span>
+            </a>
+        </div>
+        <!-- End Logo container-->
+        <div class="navbar-custom navbar-left">
+            <div id="navigation" class="active">
+                <!-- Navigation Menu-->
+
+                <!--  ui-sref="admin-business" -->
+                <ul class="navigation-menu">
+                    <li ui-sref-active="active" class="has-submenu">
+                        <a ui-sref="adminStructure.adminBusiness"><span> Business </span></a>
+                    </li>
+                   
+                    <li ui-sref-active="active" class="has-submenu">
+                        <a ui-sref="adminStructure.adminUser">
+                            <span> Users </span>
+                        </a>
+                    </li>
+                    <li ui-sref-active="active" class="has-submenu last-elements">
+                        <a ui-sref="adminStructure.adminProperties"><span> Properties </span></a>
+                    </li>
+                    
+                </ul>
+                <!-- End navigation menu  -->
+            </div>
+        </div>
+        <div class="menu-extras">
+
+            <ul class="nav navbar-nav navbar-right pull-right">
+                <li class="dropdown user-box">
+                    <a href="" class="dropdown-toggle waves-effect waves-light profile " data-toggle="dropdown"
+                        aria-expanded="true">
+                        <img src="styles/images/user-pic.jpg" alt="user-img" class="img-circle user-img">
+                        <span class="username" hide="" show-gt-sm="">
+                            User Name <i class="fa fa-angle-down"></i>
+                            <span class="label label-round label-code">Admin</span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="divider"></li>
+                        <li><a ui-sref="profileSetting">Account</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu"><a ng-click="logout()"> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

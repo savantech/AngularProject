@@ -1,0 +1,37 @@
+@CHARSET "ISO-8859-1";
+div.popup_window { z-index: 1; background-color: white;font-size: 12px;}
+
+div.popup_window div.popup_header
+{
+  border: 1px solid black;
+  border-bottom: none;
+  width: 300px;
+  height: 18px;
+  vertical-align: middle;
+  background: url('../images/headerGradientTiny.PNG') repeat-x;
+  text-decoration: none;
+  font-size:  12px;
+  cursor:  default;
+  color: white;
+}
+
+div.popup_body
+{
+  float: left;
+  text-align: left;
+  width: 290px;
+  padding: 5px;
+  border: 1px solid black;
+  background: url('form.png') no-repeat left bottom;
+}
+
+div.popup_window img.popup_exit_img
+{
+  float:  right;
+  margin: 4px 0px 0px 0px;
+  cursor: pointer;
+}
+
+
+
+

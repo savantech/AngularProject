@@ -1,0 +1,277 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-bottom: 0px;
+  color: #5a5a5a;
+      font-family: "PT Sans", sans-serif;
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    width: auto;
+        max-width: 100%;
+}
+
+/* Admin Section */
+.nav-tabs {
+    border: 0;
+    border-bottom: 1px solid #e4eaec;
+}
+
+.nav-tabs > li > a:hover {
+    border-color: transparent;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color:transparent ; 
+}
+.nav-tabs>li>a {
+    border-radius: 0;
+    color: #7b7b7b; 
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.top-controls {
+  text-align: right;
+  width: 400px;
+  margin: 0 0 30px;
+  float: right;
+}
+.top-controls button{margin-top:0;}
+.top-controls input{margin-top: 0;}
+.top-controls .right-inner-addon {display: inline-block; margin-right: 30px;}
+
+.top-controls .right-inner-addon i {color: #5a5a5a; font-size: 14px; }
+#DataTables_Table_0_wrapper {margin-bottom: 30px;}
+#DataTables_Table_0_wrapper .pagination {display: none !important;}
+
+.contentTabs h2 {margin-bottom: 25px;}
+
+.contentTabs { padding: 0; }
+.contentTabs ul.nav {padding: 30px 0 0 0; margin: 0;}
+.contentTabs ul.nav li{ list-style: none; list-style-type: none; display: inline; border: 0; }
+.contentTabs ul.nav li a {display:inline-block; padding: 10px 20px;}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {border:0; background-color: transparent; border-bottom: 2px solid #7b7b7b; }
+.nav-tabs-line>li.active>a, .nav-tabs-line>li.active>a:focus, .nav-tabs-line>li.active>a:hover {
+    color: #f8ba50;
+    background-color: transparent;
+    border-bottom: 2px solid #f8ba50; 
+}
+.nav-tabs-line>li>a:hover {
+    border-bottom-color: #f8ba50;
+}
+.head-btn { margin: 15px 30px 0 0;}
+
+.contentTabs .nav .badge {
+  color: #7d7d7d;
+  background: #f1f1f1;
+  margin-top: -10px;
+  margin-left: 10px;
+}
+
+.label-disable, .badge-disable {
+    position: ;
+    display:inline-block;
+    margin-top: 0px;
+    font-size: 10px;
+    cursor: default;
+    background-image: none;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: #333;
+    background-color: #E6E6E6;
+    font-family: 'Quicksand',sans-serif;
+
+}
+table.dataTable .img-circle { 
+  max-width: 30px;
+  width: 30px;
+  background: #fff; 
+  margin-right: 6px;
+}
+
+/*data table*/
+.text-navy {
+    color: #1AB394;
+    }
+
+.text-warning {
+    color: #f7c029;
+    }
+
+.text-del{
+    color:#ff0000;
+}
+
+
+/* DATATABLES */
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+    background: transparent;
+    }
+
+table.dataTable thead .sorting_asc:after {
+    content: "\f0d8";
+    float: right;
+    font-family: fontawesome;
+    }
+
+table.dataTable thead .sorting_desc:after {
+    content: "\f0dd";
+    float: right;
+    font-family: fontawesome;
+    }
+
+table.dataTable thead .sorting:after {
+    content: "\f0dc";
+    float: right;
+    font-family: fontawesome;
+    color: rgba(50,50,50,.5);
+    }
+
+/* TABLES */
+.table-bordered {
+    border: 1px solid #EBEBEB;
+    }
+
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+    background-color: #F5F5F6;
+    border-bottom-width: 1px;
+    }
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: 0px solid #e7e7e7;
+    }
+
+.table > thead > tr > th {
+    border-bottom: 1px solid #DDDDDD;
+    vertical-align: bottom;
+    }
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top: 1px solid #E7EAEC;
+    line-height: 1.42857;
+    padding: 8px;
+    vertical-align: middle;
+    }
+/*date range picker dropdown style */
+.ranges li.active {
+    background: #f8ba50;
+    border: 1px solid #f8ba50;
+    color: #fff;
+}
+.ranges li:hover {
+    background: #f8ba50;
+    border: 1px solid #f8ba50;
+    color: #fff;
+}
+.dropdown-menu ul, .dropdown-menu li {
+    padding: 0;
+    margin: 0;
+}
+.ranges li {
+    font-size: 13px;
+    background: #f5f5f5;
+    border: 1px solid #f5f5f5;
+    border-radius: 4px;
+    color: #7d7d7d;
+    padding: 6px 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+.range_inputs .btn:hover {background: #f0ad4e !important; color: #fff;}
+.range_inputs .btn,
+.range_inputs .btn:focus,
+.range_inputs .btn:active {background: #f8ba50 !important; color: #fff;}
+.range_inputs .btn-default,
+.range_inputs .btn-default:hover {background: #fff !important; color: #f8ba50 !important;}
+
+.reportrange {
+  background: #fff; 
+  cursor: pointer; 
+  padding: 5px 10px; 
+  border: 1px solid #E7EAEC; 
+  width: auto;
+  margin-top: 30px;
+}
+/*Modal*/
+.center {
+    margin-top:50px;   
+}
+
+.modal-header {
+  padding-bottom: 5px;
+}
+
+.modal-footer {
+      padding: 0;
+}
+
+#ManageUsers .btn-primary {margin-top: 33px;}
+
+#editAdmin .modal-body {
+    position: relative;
+    padding: 15px;
+    clear: both;
+    min-height: 230px;
+}
+#editAdmin .form-btn {text-align: left;}
+
+.modal-footer .btn-group button {
+  height:40px;
+  border-top-left-radius : 0;
+  border-top-right-radius : 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+  
+.modal-footer .btn-group:last-child > button {
+  border-right: 0;
+}
+
+/*Verify page*/
+.form-control:focus, .control-highlight {
+    border-color: #f8ba50;
+}
+
+/*admin media query*/
+@media (min-width: 768px) {
+  .navbar-right {
+      float: right !important;
+      margin-right: 30px;
+  }
+}
+@media (min-width: 979px) {
+
+  #midCol.affix-top {
+      position:fixed;
+      width:265px;
+      margin-right:10px;
+      
+  }
+  
+  #midCol.affix {
+      position:static;
+      width:100%;
+  }
+
+}
+
+@media (min-width: 767px) {
+  .affix,.affix-top {
+      position:fixed;
+  }
+}
+

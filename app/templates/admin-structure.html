@@ -1,0 +1,15 @@
+
+<div id="all" style="width: 100%;">
+    <div class="header" align="center" style="width: 99%;clear: both; margin: 5px; height: 50px;">
+        <header ng-controller="headerCtrl" id="topnav">
+            <div ng-include="sellerHomeService.webRoot + 'templates/header-admin.html'"></div>
+        </header>
+    </div>
+    <div class="bodyandnav" style="width: 99%;clear: both;min-height: 100%;padding: 5px;">
+        <ui-view></ui-view>
+    </div>
+    <div align="center" style="width: 99%;clear: both;">
+        <div ng-include="sellerHomeService.webRoot + 'templates/footer.html'"></div>
+
+    </div>
+</div>

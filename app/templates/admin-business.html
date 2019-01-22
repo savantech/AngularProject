@@ -1,0 +1,143 @@
+<div class="wrapper padding-x-lg" style="background-color: whitesmoke; ">
+    <div class="container">
+        <!-- Page-Title -->
+
+        <div class="col-lg-12">
+            <div class=" p-b-0">
+                <div class="pull-in">
+                    <div class="clearfix"></div>
+                    <div class="tab-content b-0 m-b-0">
+                        <div class="">
+                            <div class="row">
+                                <h4 class="header-title m-t-0 m-b-30">Manage Business</h4>
+
+                                <div ng-if="latestBusiness && latestBusiness.length >= 0">
+                                    <div class="col-md-3">
+                                        <div class="control-group">
+                                            <div class="controls" style="width: 400px;">
+                                                <div class="col-md-4">
+                                                    <label class="control-label" for="Buyer">Business Status
+                                                    </label>
+                                                    <select class="form-control" name="BusinessStatus" ng-model="serchVar.selectedBusinessStatus">
+                                                        <option value="">ALL</option>
+                                                        <option ng-repeat="bStatus in businessStatusList" value="{{bStatus}}">{{bStatus}}</option>
+                                                    </select>&nbsp;
+                                                </div>
+                                                <div class="col-md-2" style="padding-top: 30px;">
+                                                    <button class="btn btn-primary btn-sm m-r-5" ng-click="fetchBusinessWithStatus(0)">List</button>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="control-label" for="Search">Business Name</label>
+                                                    <input class="form-control" type="text" name="Business Name"
+                                                        ng-model="serchVar.searchName" />
+                                                </div>
+                                                <div class="col-md-2" style="padding-top: 30px;">
+                                                    <button class="btn btn-primary btn-sm m-r-5" ng-click="fetchBusinessWithStatus(0)">Search</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="dropdown pull-right">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserAndBusiness"
+                                            ng-click="emptyBusinessDetail();">Add
+                                            For KYC</button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBusiness"
+                                            ng-click="emptyBusinessDetail();">Add
+                                            Full Business</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Owner</th>
+                                                    <th>Email</th>
+                                                    <th>Phone No</th>
+                                                    <th>City</th>
+                                                    <th>Operation</th>
+                                                    <th>Action</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="business in latestBusiness" data-toggle="modal" ng-init="i=$index">
+                                                    <td>{{business.name}}</td>
+                                                    <td>{{business.createdByUser.fullName}}</td>
+                                                    <td>{{business.createdByUser.email}}</td>
+                                                    <td>{{business.phoneNumber}}</td>
+                                                    <td>{{business.address.city + "," + business.address.state}}
+                                                    </td>
+                                                    <td>
+                                                        <select ng-model="business.businessStatus" ng-change="addNewBusinessStatus(i,'{{business.businessStatus}}',business.id,business.businessStatus)">
+                                                            <option ng-repeat="s in businessStatusList">{{s}}</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <i class="fa fa-pencil cursor-pointer icon-margin" title="Edit Business"
+                                                            aria-hidden="true" data-toggle="modal" data-target="#editBusinessProfile"
+                                                            ng-click="editBusinessProfile(business)"></i>
+                                                        <!-- <i class="fa fa-file-text-o" aria-hidden="true"></i> -->
+                                                        <i class="fa fa-file-text-o cursor-pointer icon-margin" title="Add Business Document"
+                                                            aria-hidden="true" data-toggle="modal tooltip" ng-click="manageDocuments(business.id, true)"></i>
+                                                        <i class="glyphicon glyphicon-user cursor-pointer icon-margin"
+                                                            ng-click="memberDoButtonCall(business.id)" aria-hidden="true"
+                                                            data-toggle="modal" title="Add Business Member" data-target="#openBusinessMember"></i>
+                                                        <i class="fa fa-university cursor-pointer icon-margin"
+                                                            data-toggle="modal tooltip" title="Update Bank Account"
+                                                            aria-hidden="true" ng-click="addBankAccountDialog(business.id)"></i>
+                                                        <i class="fa fa-briefcase cursor-pointer icon-margin"
+                                                            aria-hidden="true" title="Update Business Profile"
+                                                            data-toggle="modal" data-target="#editBusinessType"
+                                                            ng-click="editBusinessTypeButtonCall(business.id,false);emptyBusinessDetail();editCall=true"></i>
+                                                        <i class="fa fa-globe cursor-pointer icon-margin" aria-hidden="true"
+                                                            data-toggle="modal tooltip" title="Add To Network" ng-click="openNetworkModal(business.id)"></i>
+                                                        <i class="fa fa-money cursor-pointer" aria-hidden="true" title="Add Financial Detail"
+                                                            ng-click="openFinancialDetailModal(business.id)"></i>
+                                                    </td>
+
+                                                </tr>
+                                                <tr ng-if="latestBusiness && latestBusiness.length == 0" style="text-align: center;">
+                                                    <td colspan="7">
+                                                        No records found.
+                                                    </td>
+                                                </tr>
+                                                <tr ng-if="!latestBusiness || latestBusiness.length < 0">
+                                                    <td colspan="7">
+                                                        <span>
+                                                            <img class="spinner-mainpage" ng-src="{{globalWebRoot}}images/processing.gif"
+                                                                alt="logo">
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="pull-right">
+                                            <button class="btn btn-warning" ng-click="fetchBusinessWithStatus(start-1)"
+                                                ng-show="hasPrev">Previous</button>
+                                            <button class="btn btn-success" ng-click="fetchBusinessWithStatus(start+1)"
+                                                ng-show="hasNext">Next</button>
+                                        </div>
+                                    </div>
+                                    <!-- end col -->
+                                </div>
+                                <!-- end row -->
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- end row -->
+    </div>
+
+
+</div>

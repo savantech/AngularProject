@@ -1,0 +1,122 @@
+<div class="wrapper padding-x-lg" style="background-color: whitesmoke; ">
+        <div class="container">
+            <!-- Page-Title -->
+    
+            <div class="col-lg-12">
+                <div class=" p-b-0">
+                    <div class="pull-in">
+                        <div class="clearfix"></div>
+                        <div class="tab-content b-0 m-b-0">
+                            <div class="">
+                                <div class="row">
+                                    <h4 class="header-title m-t-0 m-b-30">Manage Properties</h4>
+                                    <div class="pull-right">
+                                        <div class="control-group">
+                                            <div class="controls" style="width: 200px;">
+                                                <div >
+                                                    <label class="control-label" for="Search">Search</label>
+                                                    <input class="form-control" type="text" ng-model="search" name="" ng-model="searchName" />
+                                                </div>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Property</th>
+                                                        <th>Value</th>
+                                                        <th>Action</th>
+    
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="property in propertiesList|filter: search as filtered" data-toggle="modal" ng-init="i=$index">
+                                                        <td>{{property.key}}</td>
+                                                        <td>{{property.value}}</td>
+                                                        <td>
+                                                            <i class="fa fa-pencil cursor-pointer icon-margin" aria-hidden="true" data-toggle="modal" data-target="#editproperty" ng-click="editProperties(property)"></i>
+                                                        </td>
+    
+                                                    </tr>
+                                                    <tr ng-if="filtered && filtered.length == 0">
+                                                        <td colspan="3" style="text-align: center;">
+                                                            No records found.
+                                                        </td>
+                                                    </tr>
+                                                    <tr ng-if="!propertiesList || propertiesList.length < 0">
+                                                        <td colspan="7">
+                                                            <span>
+                                                                <img class="spinner-mainpage" ng-src="{{globalWebRoot}}images/processing.gif" alt="logo">
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- end col -->
+                                    </div>
+                                    <!-- end row -->
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                    </div>
+    
+                </div>
+    
+            </div>
+            <!-- end row -->
+        </div>
+    
+    
+    </div>
+    
+    <div id="editproperty" class="modal fade" role="dialog" style="margin-left: 450px;">
+        <div class="modal-dialog  modal-lg">
+    
+            <!-- Modal content-->
+            <div class="modal-content" style="width: 500px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Property</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="businessProfile">
+                        <div class="row">
+                            <div >
+                                <div class="card-box">
+                                    <div class="form-group"  ng-hide="updatted">
+                                        <label for="business_name" class="control-label">
+                                            <span class="valid_check" ng-show="submitted && !properties.key">*&nbsp;&nbsp;</span>Property
+                                        </label>
+                                        <input type="text" class="form-control" name="business_name" ng-model="properties.key" placeholder="Enter your property" ng-blur="checkValidation()" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="business_name" class="control-label">
+                                            <span class="valid_check" ng-show="submitted && !properties.value ">*&nbsp;&nbsp;</span>Value
+                                        </label>
+                                        <input type="text" class="form-control" name="business_name" ng-model="properties.value" placeholder="Enter your value" ng-blur="checkValidation()" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    </br>
+                    <div id="displayMsgOfEdit"></div>
+                    </br>
+                    <button type="button" ng-disabled="loadStatus;" class="btn btn-primary" ng-click="updateProperties('editproperty');submitBusiness=true;">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+    
+        </div>
+    
+    </div>

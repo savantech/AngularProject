@@ -1,0 +1,34 @@
+@CHARSET "ISO-8859-1";
+body, textarea, input, h2, h3, h4, h5, h6 {
+font-family:arial,helvetica,sans-serif;
+font-size-adjust:none;
+font-style:normal;
+font-variant:normal;
+font-weight:normal;
+color: #393732; 
+line-height:1.4;
+}
+
+body,html,td, th{
+	font-size:13px;	
+}
+
+textarea, input {
+	font-size:13px;	
+}
+
+h3 {
+	font-size:15px;	
+}
+
+body{
+	background: white;	
+}
+
+a:link{
+	text-decoration: none;	
+}
+a{
+ text-decoration: none;		
+}
+

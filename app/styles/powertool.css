@@ -1,0 +1,210 @@
+#basic-accordian{
+	border:5px solid #EEE;
+	padding:5px;
+	width:280px;
+	float: right;
+}
+
+.powerToolHolder{
+	float: right;
+	width:300px;
+	clear:both;
+	display:block;
+}
+.content-class{
+	overflow: scroll;
+	height: 400px;
+	font-family: georgia, Arial, sans-serif;
+    font-size: 14px;
+    width: 290px;
+}
+
+.accordion_headings{
+	padding:5px;
+	background:#0DA0AB;
+	color:#FFFFFF;
+	border:1px solid #FFF;
+	cursor:pointer;
+	width:280px;
+	font-weight:bold;
+}
+
+.accordion_headings a:link,.accordion_headings a:visited,.accordion_headings a:active {
+	font-family: verdana, Arial, sans-serif;
+	font-size:11px;
+	color: white;
+}
+.heading_explain{
+	padding:5px;
+	float: right;
+	background:#0DA0AB;
+	color:#FFFFFF;
+	cursor:pointer;
+	font-family: verdana, Arial, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+}
+
+
+.accordion_child{
+	padding:15px;
+	background:#EEE;
+}
+
+.header_highlight{
+	background:#0DA0AB;
+}
+
+.singleTopicDetails{
+	padding-top:5px;
+	padding-bottom:5px;
+	background:inherit;
+	color:grey;
+	font-size: 12px;
+}
+.singleTopicDetails a{
+	 color: grey;
+	 font-family: georgia, Arial, sans-serif;
+     font-size: 12px;
+}
+
+.singleTopicDetails a:link,.singleTopicDetails a:visited,.singleTopicDetails a:active {
+		color: #3D3D3D;
+}
+
+.singleTopicDetails a:hover {
+		color: black;
+		text-decoration: underline;
+		font-weight: normal;
+}
+
+.topicHeader{
+	display: block;
+	clear: both;
+	float: left;
+	padding:2px;
+	width: 100%;
+	background:#EEE;
+	color:black;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.profiletopicHeader{
+	display: block;
+	clear: both;
+	float: left;
+	width: 100%;
+	background:#EEE;
+	color:black;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.topicHeaderLeft{
+	float: left;
+	padding:2px;
+	background:#EEE;
+	color:black;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.topicHeaderRight{
+	float: right;
+	padding:2px;
+	background:#EEE;
+	color:black;
+	margin-right:10px;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+.smallFont{
+	color: black;
+	font-family: georgia, Arial, sans-serif;
+    font-size: 11px;
+}
+
+.recoView{
+	width: 500px;
+	background-color: inherit;
+	color: black;
+	font-family: georgia, Arial, sans-serif;
+    font-size: 11px;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+	border-bottom: thin solid #C2C2C2
+}
+.recoView a:link {
+	font-size: 11px;
+	color: #00B0EB;
+}
+
+.recoView a:visited {
+	color: #00B0EB;
+}
+
+.recoView a:active {
+	color: #009DD1;
+}
+
+
+
+.recoView a:hover {
+	color: blue;
+	text-decoration: underline;
+	font-weight: normal;
+}
+
+.tagCloudEven{
+ 	font-family: georgia, Arial, sans-serif;
+ 	padding: 5px;
+ 	float: left;
+}
+
+.tagCloudEven a:link,.tagCloudEven a:visited,.tagCloudEven a:active {
+	color: black;
+}
+
+.tagCloudEven a:hover {
+	color: green;
+	text-decoration: underline;
+	font-weight: normal;
+
+}
+.tagCloudOdd{
+	font-family: georgia, Arial, sans-serif;
+	padding: 5px;
+	float: left;
+}
+
+.tagCloudOdd a:link,.tagCloudOdd a:visited,.tagCloudOdd a:active {
+	color: blue;
+}
+.tagCloudOdd a:hover {
+	color: green;
+	text-decoration: underline;
+	font-weight: normal;
+}
+
+.tagCloudSynopsis{
+	background:inherit;
+	color:grey;
+	font-size: 15px;
+}
+.tagCloudSynopsis a{
+	 color: grey;
+	 font-family: georgia, Arial, sans-serif;
+     font-size: 15px;
+}
+
+.tagCloudSynopsis a:link,.tagCloudSynopsis a:visited,.tagCloudSynopsis a:active {
+	color: #3D3D3D;
+}
+
+.tagCloudSynopsis a:hover {
+	color: black;
+	text-decoration: underline;
+	font-weight: normal;
+}

@@ -1,0 +1,205 @@
+<div class="wrapper padding-x-lg" style="background-color: whitesmoke;height:100%;">
+    <div class="container">
+        <!-- Page-Title -->
+        <div class="col-lg-12">
+            <div class="card-bo x p-b-0">
+
+                <div class="clearfix"></div>
+                <div class="tab-content b-0 m-b-0">
+                    <div class="">
+                        <div class="row">
+                            <h4 class="header-title m-t-0 ">Manage User Profile
+                            </h4>
+                            <div ng-if="listOfUsers && listOfUsers.length >= 0">
+                                <div class="col-md-3">
+                                    <div class="control-group">
+                                        <div class="controls" style="width: 400px;">
+                                            <div class="col-md-6">
+                                                <label class="control-label" for="Search">Search</label>
+                                                <input class="form-control" placeholder="Email/Phone Number" maxlength="50"
+                                                    type="text" name="serach" ng-model="search.searchName" />
+                                            </div>
+                                            <div class="col-md-2" style="padding-top: 30px;">
+                                                <button class="btn btn-primary btn-sm m-r-5" ng-click="getAllUserDetail(0)">Search</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="dropdown pull-right" style="margin-right: 20px;">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUser"
+                                        ng-click="closeTab()">Add
+                                        User</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="card-box">
+
+                                    <div class="table-responsive">
+
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Mobile No</th>
+                                                    <th>Date of joining</th>
+                                                    <th>Location</th>
+                                                    <th>Active</th>
+                                                    <th>Action</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="user in listOfUsers" data-toggle="modal" data-target="#invoiceInPopUp{{factor.factoringId}}">
+                                                    <td>{{user.fullName?user.fullName:'--NA--'}}</td>
+                                                    <td>{{user.email?user.email:'--NA--'}}</td>
+                                                    <td>{{user.phoneNumber?user.phoneNumber:'--NA--'}}</td>
+                                                    <td>{{user.creationDate?(user.creationDate|date:'dd/MM/yyyy'):'--NA--'}}</td>
+                                                    <td>{{user.address.city + "," + user.address.state}}</td>
+                                                    <td>
+                                                        <select ng-model="user.active" ng-change="changeUserStatus(user.id,user.active)">
+                                                            <option ng-repeat="status in activeStatus" value="{{status.value}}">{{status.name}}</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <i class="fa fa-pencil cursor-pointer icon-margin" aria-hidden="true"
+                                                            data-toggle="modal" data-target="#addUser" ng-click="editUser(user);emptyEdit()"></i>
+                                                        <i class="fa fa-lock cursor-pointer" aria-hidden="true"
+                                                            data-toggle="modal" data-target="#changePasswordModal"
+                                                            ng-click="setEmptyArray(user.id)"></i>
+                                                    </td>
+                                                </tr>
+                                                <tr ng-if="listOfUsers && listOfUsers.length == 0" style="text-align: center;">
+                                                    <td colspan="7">
+                                                        No records found.
+                                                    </td>
+                                                </tr>
+                                                <tr ng-if="!listOfUsers || listOfUsers.length < 0">
+                                                    <td colspan="7">
+                                                        <span>
+                                                            <img class="spinner-mainpage" ng-src="{{globalWebRoot}}images/processing.gif"
+                                                                alt="logo">
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="pull-right">
+                                            <button class="btn btn-warning" ng-click="getAllUserDetail(start-1)"
+                                                ng-show="hasPrev">Previous</button>
+                                            <button class="btn btn-success" ng-click="getAllUserDetail(start+1)"
+                                                ng-show="hasNext">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+
+    </div>
+    <!-- end container -->
+
+    <!-- User Registration Modal  -->
+
+
+
+</div>
+<div id="addUser" class="modal fade" role="dialog">
+    <div class="modal-dialog  modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"> {{profile.trackingId ? 'Edit':'Setup'}} User Profiles</h4>
+            </div>
+            <div class="modal-body">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="cursor-pointer" ng-class="{active:tab==1 ,disabled : !profile.trackingId}"
+                        ng-click="showTab(1);">
+                        <a aria-controls="uploadTab" role="tab">Profile</a>
+                    </li>
+                    <li role="presentation" class="cursor-pointer" ng-class="{active:tab==2 ,disabled : !profile.trackingId}"
+                        ng-click="showTab(2);">
+                        <a aria-controls="browseTab" role="tab">Contact</a>
+                    </li>
+                </ul>
+                <div class="tab-content tab-content-height">
+                    <div id="userprofile" ng-show="tab==1">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card-box">
+                                    <div class="form-group">
+                                        <label for="username" class="cols-sm-2 control-label">
+                                            <span class="valid_check" ng-show="profileSubmit && !basicProfileDetail.name ">*&nbsp;&nbsp;</span>User
+                                            Name
+                                        </label>
+                                        <input type="text" class="form-control" maxlength="50" name="username"
+                                            placeholder="Enter your User Name" ng-model="basicProfileDetail.name"
+                                            ng-blur="checkValidation()" />
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="email" class="cols-sm-2 control-label">
+                                            <span class="valid_check" ng-show="!profile.trackingId && profileSubmit && !basicProfileDetail.email">*&nbsp;&nbsp;</span>Email</label>
+                                        <input type="text" class="form-control" ng-disabled="profile.trackingId"
+                                            maxlength="50" name="email" placeholder="Enter your email" ng-model="basicProfileDetail.email"
+                                            ng-blur="checkValidation();" />
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!-- end col-->
+                            <div class="col-lg-6">
+                                <div class="card-box">
+                                    <div class="form-group">
+                                        <label for="phoneno" class="cols-sm-2 control-label">
+                                            <span class="valid_check" ng-show="!profile.trackingId && profileSubmit && !basicProfileDetail.phone_number">*&nbsp;&nbsp;</span>Phone
+                                            No.</label>
+                                        <input type="text" class="form-control" name="phoneno" maxlength="15"
+                                            placeholder="Enter your Phone No" ng-model="basicProfileDetail.phone_number"
+                                            ng-disabled="profile.trackingId" ng-blur="checkValidation();sellerHomeService.checkPhoneNumber($event.target)" />
+                                    </div>
+
+                                    <br />
+                                    <div class="form-group" ng-show="!profile.trackingId">
+                                        <label for="password" class="cols-sm-2 control-label">
+                                            <span class="valid_check" ng-show="profileSubmit && !basicProfileDetail.password ">*&nbsp;&nbsp;</span>Password</label>
+                                        <input type="password" class="form-control" name="password" placeholder="Enter your password"
+                                            ng-model="basicProfileDetail.password" maxlength="32" ng-blur="checkValidation()" />
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- end col-->
+                        </div>
+                    </div>
+                    <div id="usercontact" ng-show="tab==2">
+                        <user-profile profile-title="User Profile" profile="profile" submitted1="submitted1"></user-profile>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <br />
+                <div id="displayMsg"></div>
+                <br />
+                <button type="button" ng-show="tab==1" ng-disabled="loadStatus" class="btn btn-primary" ng-click="saveUserProfileDetail();profileSubmit=true;">Next
+                    >></button>
+                <button type="button" ng-show="tab==2" ng-disabled="loadStatus" class="btn btn-primary" ng-click="saveUserContactDetail('addUser')">{{!profile.trackingId?'Save':'Update'}}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeTab()">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
