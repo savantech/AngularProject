@@ -1,0 +1,91 @@
+
+<div class="row">
+    <div class="row" ng-if="isAddBusinessType">
+        <h4 class="text-center">Register as a buyer/Vendor...{{business_type_display}}</h4>
+        <div class="card-box">
+            <div class="col-md-12 text-center">
+                <span>
+                    <input type="radio" ng-model="business_type_display" value="seller" ng-change="radio_changed('seller')">
+                    <span style="font-size: 14px; font-weight: bold;">Register as Vendor</span>
+                </span> &nbsp; &nbsp; &nbsp;
+                <span>
+                    <input type="radio" ng-model="business_type_display" value="buyer" ng-change="radio_changed('buyer')">
+                    <span style="font-size: 14px; font-weight: bold;">Register as Buyer</span>
+                </span> &nbsp; &nbsp; &nbsp;
+                <span>
+                    <input type="radio" ng-model="business_type_display" value="fi" ng-change="radio_changed('fi')">
+                    <span style="font-size: 14px; font-weight: bold;">Register as FI</span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <span>
+        <img ng-if="!business_type_display" class="spinner" ng-src="{{globalWebRoot}}images/processing.gif" alt="logo">
+    </span>
+    <h4 class="alert alert-info" ng-if="!isAddBusinessType && business_type_display">The business is a {{business_type_display}} profile.</h4>
+    <div class="row" ng-show="business_type_display=='seller'">
+        <div class="card-box">
+            <div class="col-md-8 col-lg-offset-2">
+                <div class="form-group">
+                    <label for="platform_financial_limit" class="cols-sm-2 control-label">
+                            <span class="valid_check" ng-show="isValidForm && business_type_display=='seller' && !businessTypeParams.credit_rating">*&nbsp;&nbsp;</span>Credit Rating</label>
+                    <select type="text" class="form-control" name="state" ng-model="businessTypeParams.credit_rating" placeholder="Select Credit Rate">
+                        <option ng-repeat="rate in creditRate" value="{{rate.value}}">{{rate.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="platform_financial_limit" class="cols-sm-2 control-label">
+                            Escrow Account Id</label>
+                    <input type="text" class="form-control" ng-model="businessTypeParams.escrow_account_id" maxlength="20" placeholder="Enter your Escrow Account Id"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="business_type_display=='buyer'">
+        <div class="card-box">
+            <div class="col-md-8 col-lg-offset-2">
+                <div class="form-group">
+                    <label for="platform_financial_limit" class="cols-sm-2 control-label">Credit Rating</label>
+                    <select type="text" class="form-control" name="state" ng-model="businessTypeParams.credit_rating" placeholder="Select Credit Rate">
+                        <option ng-repeat="rate in creditRate" value="{{rate.value}}">{{rate.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="platform_financial_limit" class="cols-sm-2 control-label">Platform Rate For Vendor Yearly</label>
+                    <input type="text" class="form-control" ng-model="businessTypeParams.platform_rate_for_vendor_yearly" maxlength="20" placeholder="Enter your Platform Rate For Vender"
+                        ng-keyup="sellerHomeService.checkPhoneNumberWithDot($event.target)" ng-pattern="sellerHomeService.objRegexWithDot"
+                    />&nbsp;
+                    <br>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" ng-model="businessTypeParams.finance_vendors" ng-change="setPlateFormRate()" />&nbsp;
+                    <span style="font-size: 16px; font-weight: bold;">Finance invoices of your own vendors</span>
+                    <br>
+                </div>
+                <div class="form-group" ng-if="businessTypeParams.finance_vendors">
+                    <label for="platform_financial_limit" class="cols-sm-2 control-label">Platform Rate As Financier Yearly</label>
+                <input type="text" class="form-control" ng-model="businessTypeParams.platform_rate_as_financier_yearly" maxlength="20" placeholder="Enter your Platform Rate"
+                        ng-keyup="sellerHomeService.checkPhoneNumberWithDot($event.target)" ng-pattern="sellerHomeService.objRegexWithDot"
+                    />&nbsp;
+                </div>
+                <div class="form-group">
+                    <span style="font-size: 16px; font-weight: bold;">Change final payment to escrow account after</span>
+                    <div>
+                        <select type="text" class="form-control" ng-model="businessTypeParams.account_change_buyer_config" name="finalpayment" placeholder="Select Credit Rate">
+                            <option value="" selected hidden></option>
+                            <option ng-repeat="option in listOfAccountChangeBuyerConfig" value="{{option.value}}">{{option.key}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="business_type_display=='fi'">
+        <fi-business-type  business-id="businessId" business-type-params="businessTypeParams" ></fi-business-type>
+    </div>
+    <div id="displayMsgOfEditBusinessType">
+    </div>
+    <div ng-if="isValidForm && business_type_display=='seller' && (!businessTypeParams.credit_rating)" >
+        <div class='alert alert-danger' style="text-align:center;" >All (*) Fields are Required.</div>
+    </div>
+</div>

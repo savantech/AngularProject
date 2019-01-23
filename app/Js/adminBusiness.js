@@ -3,6 +3,8 @@ angular.module("angularJsApp").controller('adminBusiness', function ($state, sel
     $scope.businessStatusList = [];
     $scope.latestBusiness = [];
     $scope.start = 0;
+    $scope.tab = 1;
+    
     $scope.serchVar = {
         selectedBusinessStatus: '',
         searchName: ''

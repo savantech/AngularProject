@@ -40,9 +40,9 @@
                                     </div>
                                     <br>
                                     <div class="dropdown pull-right">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserAndBusiness"
+                                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserAndBusiness"
                                             ng-click="emptyBusinessDetail();">Add
-                                            For KYC</button>
+                                            For KYC</button> -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBusiness"
                                             ng-click="emptyBusinessDetail();">Add
                                             Full Business</button>
@@ -141,3 +141,70 @@
 
 
 </div>
+
+<!-- Add Business Modal -->
+<div id="addBusiness" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog  modal-lg">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Setup Business</h4>
+			</div>
+			<div class="modal-body">
+				<!-- <business-profile business-title="Business Profile" business="business" submitted="submitBusiness" role="sellerHomeService.adminRole"></business-profile> -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" ng-class="{active:tab==1}" class="disabled">
+						<a aria-controls="uploadTab" role="tab">Setup Business</a>
+					</li>
+					<li role="presentation" ng-class="{active:tab==2}" class="disabled">
+						<a aria-controls="uploadTab" role="tab">Setup Address</a>
+					</li>
+					<li role="presentation" ng-class="{active:tab==3}" class="disabled">
+						<a aria-controls="browseTab" role="tab">Setup Business Type</a>
+					</li>
+				</ul>
+				<div class="tab-content tab-content-height">
+					<div id="usercontact" ng-show="tab==1">
+						<business-profile business-title="Business Profile" business="business" submitted="submitted" role="sellerHomeService.adminRole"></business-profile>
+						<!-- </br> -->
+						<div id="displayMsg"></div>
+						<!-- </br> -->
+					</div>
+					<div id="usercontact" ng-show="tab==2">
+						<business-address same-as-above="sameAsAbove" business="business" submitted="submitted">
+						</business-address>
+						<!-- </br> -->
+
+						<div id="displayMsgAddress"></div>
+						<!-- </br> -->
+					</div>
+					<div id="userprofile" ng-show="tab==3">
+						<business-type business-type-call-back="businessTypeCallBack(businessType)" modal-id="'addBusiness'"
+						 is-add-business-type="isAddBusinessType"></business-type>
+						<div id="displayMsgOfEditBusinessType"></div>
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<!-- </br>
+				</br> -->
+				<button type="button" ng-disabled="loadStatus" class="btn btn-primary" ng-show="tab==1" ng-click="businessDetailCheck();">Next
+					>>
+				</button>
+				<button type="button" ng-disabled="loadStatus" class="btn btn-primary" ng-show="tab==2" ng-click="prevPage();">
+					Previous
+				</button>
+				<button type="button" ng-disabled="loadStatus" class="btn btn-primary" ng-show="tab==2" ng-click="addBusimessDetail();submitBusiness=true;">Save&Next
+					>>
+				</button>
+				<button type="button" ng-disabled="loadStatus" class="btn btn-primary" ng-show="tab==3" ng-click="businessTypeButtonCall(businessId)">Finish</button>
+				<button type="button" class="btn btn-default" class="close" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+

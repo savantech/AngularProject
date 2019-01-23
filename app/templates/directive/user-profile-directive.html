@@ -1,0 +1,76 @@
+<div class="row">
+	<div class="col-lg-6">
+		<div class="card-box">
+			<div class="form-group"  ng-show="profile.trackingId">
+				<label for="city" class="cols-sm-2 control-label">
+					<span class="valid_check">&nbsp;&nbsp;</span>Tracking Id
+				</label>
+				<input type="text" class="form-control" name="trackingId" maxlength="50" ng-model="profile.trackingId"  disabled/>
+				<br />
+			</div>
+			<div class="form-group">
+				<label for="city" class="cols-sm-2 control-label">
+					<span class="valid_check" ng-show="submitted1 && !profile.city ">*&nbsp;&nbsp;</span>City
+				</label>
+				<input type="text" class="form-control" name="city" maxlength="50" ng-model="profile.city" placeholder="Enter your city" ng-blur="checkValidation()" />
+			</div>
+
+			<br />
+
+			<div class="form-group">
+				<label for="state" class="cols-sm-2 control-label">
+					<span class="valid_check" ng-show="submitted1 && !profile.state ">*&nbsp;&nbsp;</span>State</label>
+				<select type="text" class="form-control" name="state" ng-model="profile.state" placeholder="Enter your state">
+					<option ng-repeat="state in statesList track by $index">{{state.name}}</option>
+				</select>
+			</div>
+
+			<br />
+			<div class="form-group">
+				<label for="address" class="cols-sm-2 control-label">
+					<span class="valid_check" ng-show="submitted1 && !profile.address ">*&nbsp;&nbsp;</span>Address</label>
+				<textarea class="form-control" name="address" maxlength="500" ng-model="profile.address" placeholder="Enter your address" ng-blur="checkValidation()" />
+				</textarea>
+			</div>
+		</div>
+	</div>
+	<!-- end col-->
+	<div class="col-lg-6">
+		<div class="card-box">
+			<div class="form-group" ng-show="profile.userName">
+				<label for="city" class="cols-sm-2 control-label">
+					<span class="valid_check" >&nbsp;&nbsp;</span>User Name
+				</label>
+				<input type="text" class="form-control" name="userName" ng-model="profile.userName"  disabled />
+				<br />
+			</div>
+			<div class="form-group">
+				<label for="pincode" class="cols-sm-2 control-label">
+					<span class="valid_check" ng-show="submitted1 && !profile.pin_code ">*&nbsp;&nbsp;</span>Pincode</label>
+				<input type="text" class="form-control" maxlength="6" name="pincode" ng-model="profile.pin_code" ng-pattern="sellerHomeService.objRegex"
+				 placeholder="Enter your Pincode" ng-blur="checkValidation();sellerHomeService.checkPinNumber($event.target)" />
+			</div>
+
+			<br />
+			<div class="form-group">
+				<label for="pancard" class="cols-sm-2 control-label">
+					<span class="valid_check" ng-show="submitted1 && !profile.pan_card">*&nbsp;&nbsp;</span>Pan Card
+				</label>
+				<input type="text" class="form-control" name="pancard" maxlength="10"  ng-model="profile.pan_card" ng-pattern="sellerHomeService.regpan"
+				 placeholder="Enter your Pan no:" ng-blur="checkValidation();sellerHomeService.checkPANNumber($event.target)" />
+			</div>
+
+			<br />
+
+			<div class="form-group">
+				<label for="aadhar" class="cols-sm-2 control-label">
+					<span class="valid_check" ng-show="submitted1 && !profile.aadhar ">*&nbsp;&nbsp;</span>Aadhar Number
+					(XXXX-XXXX-XXXX)</label>
+				<input type="text" class="form-control" maxlength="15" name="aadhar" ng-model="profile.aadhar" ng-pattern="sellerHomeService.regaadhar"
+				 placeholder="Enter your Aadhar no:" ng-blur="checkValidation();sellerHomeService.checkAadharNumber($event.target)" />
+			</div>
+
+		</div>
+	</div>
+	<!-- end col-->
+</div>

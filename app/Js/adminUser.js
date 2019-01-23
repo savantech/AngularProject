@@ -2,6 +2,7 @@ angular.module("angularJsApp").controller('adminUser', function ($state,sellerHo
     $scope.sellerHomeService = sellerHomeService;
     $scope.listOfUsers = [];
     $scope.start = 0;
+    $scope.tab = 2;
     $scope.search = {
         searchName: ''
     }

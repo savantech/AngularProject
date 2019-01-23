@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-6 ">
+                Registered Address
+        </div>
+        <div class="col-md-6 pull-right">
+                Correspondence Address
+                <br/>
+            <input type="checkbox" class="" name="same" ng-model="sameAsAbove" ng-change="setRegisterAddressAsCorrespondence()" /> <span style="font-weight: 600">Same as Registered Address</span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card-box">
+            <div class="form-group">
+                <label for="address" class="cols-sm-2 control-label">
+                    <span class="valid_check" ng-show="submitted && !business.registered_address.city">*&nbsp;&nbsp;</span>Address
+                </label>
+                <textarea class="form-control"  name="address" ng-model="business.registered_address.address" maxlength="300" placeholder="Enter your address" >
+                </textarea>
+            </div>
+            <div class="form-group">
+                <label for="city" class="cols-sm-2 control-label">
+                    <span class="valid_check" ng-show="submitted && !business.registered_address.city ">*&nbsp;&nbsp;</span>City</label>
+                <input type="text" class="form-control" name="city" maxlength="30" ng-model="business.registered_address.city" placeholder="Enter your city" />
+            </div>
+
+            <div class="form-group">
+                <label for="pincode" class="cols-sm-2 control-label">
+                    <span class="valid_check" ng-show="submitted && !business.registered_address.pinCode ">*&nbsp;&nbsp;</span>Pincode</label>
+                <input type="text" class="form-control" name="pincode" maxlength="6" ng-model="business.registered_address.pinCode" maxlength="6"
+                 placeholder="Enter your pincode" ng-blur="sellerHomeService.checkPinNumber($event.target)" ng-pattern="sellerHomeService.objRegex" />
+            </div>
+            <div class="form-group">
+                <label for="state" class="cols-sm-2 control-label">
+                    <span class="valid_check" ng-show="submitted && !business.registered_address.state ">*&nbsp;&nbsp;</span>State</label>
+                <select type="text" class="form-control" name="state" ng-model="business.registered_address.state" placeholder="Enter your state">
+                    <option ng-repeat="state in sellerHomeService.statesList track by $index">{{state.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pincode" class="cols-sm-2 control-label">
+                    <span class="valid_check" ng-show="submitted && !business.registered_address.country">*&nbsp;&nbsp;</span>Country</label>
+                <input type="text" class="form-control" name="pincode" maxlength="30" ng-model="business.registered_address.country" maxlength="6"
+                 placeholder="Enter your Country"   />
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card-box">
+            <div class="form-group">
+                <label for="address" class="cols-sm-2 control-label">
+                    <span class="valid_check" ng-show="submitted && !business.correspondence_address.address ">*&nbsp;&nbsp;</span>Address
+                </label>
+                <textarea class="form-control" ng-disabled="sameAsAbove" name="address" ng-model="business.correspondence_address.address" maxlength="300" placeholder="Enter your address" >
+                </textarea>
+            </div>
+            <div class="form-group">
+                <label for="city" class="cols-sm-2 control-label">
+                    <span class="valid_check" ng-show="submitted && !business.correspondence_address.city ">*&nbsp;&nbsp;</span>City</label>
+                <input type="text" class="form-control" ng-disabled="sameAsAbove" name="city" maxlength="30" ng-model="business.correspondence_address.city" placeholder="Enter your city" />
+            </div>
+
+            <div class="form-group">
+                <label for="pincode" class="cols-sm-2 control-label">
+                    <span class="valid_check" ng-show="submitted && !business.correspondence_address.pinCode ">*&nbsp;&nbsp;</span>Pincode</label>
+                <input type="text" class="form-control" name="pincode" maxlength="6" ng-model="business.correspondence_address.pinCode" maxlength="6"
+                 placeholder="Enter your pincode" ng-disabled="sameAsAbove" ng-blur="sellerHomeService.checkPinNumber($event.target)" ng-pattern="sellerHomeService.objRegex" />
+            </div>
+            <div class="form-group">
+                <label for="state" class="cols-sm-2 control-label">
+                    <span class="valid_check" ng-show="submitted && !business.correspondence_address.state ">*&nbsp;&nbsp;</span>State</label>
+                <select type="text" class="form-control" ng-disabled="sameAsAbove" name="state" ng-model="business.correspondence_address.state" placeholder="Enter your state">
+                    <option ng-repeat="state in sellerHomeService.statesList track by $index">{{state.name}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="pincode" class="cols-sm-2 control-label">
+                    <span class="valid_check" ng-show="submitted && !business.correspondence_address.country ">*&nbsp;&nbsp;</span>Country</label>
+                <input type="text" class="form-control" ng-disabled="sameAsAbove" name="pincode" maxlength="30" ng-model="business.correspondence_address.country" maxlength="6"
+                 placeholder="Enter your Country" />
+            </div>
+        </div>
+    </div>
+</div>
