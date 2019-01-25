@@ -1,0 +1,73 @@
+<div class="wrapper-page">
+
+    <div class="head-bg">
+        <div class="head-bg-img"></div>
+        <div class="head-bg-content">
+            <div class="m-t-30 card-box">
+                <div class="text-center">
+                    <h4 class="text-uppercase font-bold m-b-0">Sign Up</h4>
+                </div>
+                <div class="panel-body">
+                    <div id="error_msg"></div>
+                    <div class="form-horizontal m-t-10">
+                        
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" id="sign_email"
+                                ng-blur="sellerHomeService.checkEmail()" name='sign_email' ng-model="signupObj.email" type="text"
+                                    placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" id="sign_name"
+                                    name='first_name' ng-blur="sellerHomeService.checkName()"  ng-model="signupObj.name" type="text"
+                                    placeholder="Name as on Passport or PAN">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" id="sign_phone_number"
+                                    name='last_name' ng-blur="sellerHomeService.checkPhoneNumber($event.target)" ng-model="signupObj.phone_number" type="text"
+                                    placeholder="Phone Number">
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input class="form-control" id="sign_password"
+                                    name='sign_password' type="password" ng-model="signupObj.password" 
+                                    placeholder="Password" ng-blur="sellerHomeService.checkPassword()">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group text-center m-t-30">
+                            <div class="col-xs-12">
+                                <button
+                                    class="btn btn-primary btn-bordred btn-block waves-effect waves-light text-uppercase"
+                                    ng-click="callSignUp()">Sign Up</button>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- end card-box -->
+
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <p class="text-muted">
+                        Already have an account? <a href="#!/login"
+                            class="text-primary m-l-5"><b>Login</b></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

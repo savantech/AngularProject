@@ -3,11 +3,21 @@
 angular.
   module('angularJsApp').
   config(function ($routeProvider, $stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/admin/login");
+    $urlRouterProvider.otherwise("/login");
 
     $stateProvider
+      .state("signup", {
+        url: '/signup',
+        templateUrl: 'templates/register.html',
+        controller: 'registerCtrl',
+        resolve: {
+          loadCtrl: function ($ocLazyLoad) {
+            return $ocLazyLoad.load('js/register.js');
+          }
+        }
+      })
       .state("login", {
-        url: '/admin/login',
+        url: '/login',
         templateUrl: 'templates/login.html',
         controller: 'loginC',
         resolve: {
