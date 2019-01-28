@@ -194,7 +194,7 @@
                 <br />
                 <div id="displayMsg"></div>
                 <br />
-                <button type="button" ng-show="tab==1" ng-disabled="loadStatus" class="btn btn-primary" ng-click="addUserClick();profileSubmit=true;">Next
+                <button type="button" ng-show="tab==1" ng-disabled="loadStatus" class="btn btn-primary" ng-click="saveUserProfileDetail();profileSubmit=true;">Next
                     >></button>
                 <button type="button" ng-show="tab==2" ng-disabled="loadStatus" class="btn btn-primary" ng-click="saveUserContactDetail('addUser')">{{!profile.trackingId?'Save':'Update'}}</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeTab()">Close</button>
@@ -203,3 +203,46 @@
 
     </div>
 </div>
+
+<!--Modal for change password  -->
+<div id="changePasswordModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Change Password</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card-box">
+                                <div class="form-group">
+                                    <label for="newpassword" class="cols-sm-2 control-label">
+                                        <span class="valid_check" ng-show="profileSubmit && !changePassword.password_new ">*&nbsp;&nbsp;</span>New
+                                        Password
+                                    </label>
+                                    <input type="password" class="form-control" name="newpassword" placeholder="Enter your new password" ng-model="changePassword.password_new" />
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <label for="password" class="cols-sm-2 control-label">
+                                        <span class="valid_check" ng-show="profileSubmit && !changePassword.password_confirm ">*&nbsp;&nbsp;</span>Confirm
+                                        Password</label>
+                                    <input type="password" class="form-control" maxlength="32" name="password" placeholder="Enter your confirm password"
+                                     ng-model="changePassword.password_confirm" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <br />
+                    <div id="displayMsgForChangePassword"></div>
+                    <br />
+                    <button type="button" ng-disabled="loadStatus" class="btn btn-primary" ng-click="updateUserPassword('changePasswordModal');profileSubmit=true">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+    
+        </div>
+    </div>

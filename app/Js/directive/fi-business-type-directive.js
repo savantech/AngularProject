@@ -31,27 +31,35 @@ angular.module("angularJsApp")
                         //     .html("");
                         console.log($scope.businessId);
                         if ($scope.businessId) {
-                            $http(
-                                {
-                                    method: 'GET',
-                                    url: '/capitallever/api/fi/' + $scope.businessId,
-                                    headers: {
-                                        'Content-Type': 'application/x-www-form-urlencoded'
-                                    }
-                                }).then(function (response) {
-                                    console.log(response.data);
-                                    $scope.businessTypeParams.financier_type = response.data.financierType;
-                                    $scope.businessTypeParams.penalty_interest_applicable_after_days = response.data.penaltyInterestAfterDays != null ? response.data.penaltyInterestAfterDays.toString() : '';
-                                    $scope.businessTypeParams.penalty_interest_additional_increment = response.data.penaltyInterestAdditionalIncrement != null ? response.data.penaltyInterestAdditionalIncrement.toString() : '';
-                                    $scope.businessTypeParams.loan_procesing_average_time_days = response.data.loanProcessingTimeInDays != null ? response.data.loanProcessingTimeInDays.toString() : '';
-                                    $scope.businessTypeParams.platform_maximum_exposure = response.data.platformMaxExposure != null ? response.data.platformMaxExposure.toString() : '';
-                                    $scope.businessTypeParams.stamp_duty_state = response.data.stampDuty != null ? response.data.stampDuty.toString() : '';
-                                    $scope.businessTypeParams.platform_rate_yearly = response.data.platformRateYearly;
-                                    $scope.businessTypeParams.penalty_processing_flat_fee = response.data.penaltyProcessingFlatFee;
-                                    $scope.businessTypeParams.enable_marketplace = response.data.enableMarketplace;
-                                }, function (error) {
-                                    // $scope.sellerHomeService.openAlert({ alertMsg: error.data.error, alertApi: error.config.url });
-                                });
+                            // $scope.sellerHomeService.makeGetServiceCall("api/business/list", param,  (response) => {
+                            //     console.log(response);
+                            //     if(!response.data.error){
+                            //         $scope.latestBusiness = response.data;
+                            //         $scope.checkNextPrev(start, $scope.latestBusiness.length);
+                            //     }else{
+                            //         $scope.sellerHomeService.openAlert({ alertMsg: response.data.error, alertApi: '' });
+                            //         $scope.latestBusiness = [];
+                            //     }
+                            // });
+                                // $http(
+                                // {
+                                //     method: 'GET',
+                                //     url: '/capitallever/api/fi/' + $scope.businessId,
+                                //     headers: {
+                                //         'Content-Type': 'application/x-www-form-urlencoded'
+                                //     }
+                                // }).then(function (response) {
+                                //     console.log(response.data);
+                                //     $scope.businessTypeParams.financier_type = response.data.financierType;
+                                //     $scope.businessTypeParams.penalty_interest_applicable_after_days = response.data.penaltyInterestAfterDays != null ? response.data.penaltyInterestAfterDays.toString() : '';
+                                //     $scope.businessTypeParams.penalty_interest_additional_increment = response.data.penaltyInterestAdditionalIncrement != null ? response.data.penaltyInterestAdditionalIncrement.toString() : '';
+                                //     $scope.businessTypeParams.loan_procesing_average_time_days = response.data.loanProcessingTimeInDays != null ? response.data.loanProcessingTimeInDays.toString() : '';
+                                //     $scope.businessTypeParams.platform_maximum_exposure = response.data.platformMaxExposure != null ? response.data.platformMaxExposure.toString() : '';
+                                //     $scope.businessTypeParams.stamp_duty_state = response.data.stampDuty != null ? response.data.stampDuty.toString() : '';
+                                //     $scope.businessTypeParams.platform_rate_yearly = response.data.platformRateYearly;
+                                //     $scope.businessTypeParams.penalty_processing_flat_fee = response.data.penaltyProcessingFlatFee;
+                                //     $scope.businessTypeParams.enable_marketplace = response.data.enableMarketplace;
+                                // });
                         }
                     }
 

@@ -16,6 +16,7 @@ angular.module("angularJsApp").service('sellerHomeService', function ($filter, $
         checkName: function () { },
         checkPhoneNumber: function (phoneno) { },
         checkPassword: function () { },
+        openAlert: function () { },
     };
 
     this.arrayOfapiNameToExcludeToken = ['api/user/free/login', 'api/user/free/signup']
@@ -38,17 +39,18 @@ angular.module("angularJsApp").service('sellerHomeService', function ($filter, $
         } else {
             apiName = this.url + api;
         }
-        return $http.post(apiName, params, { headers: headers }).then(function (response) {
+        console.log(params);
+        return $http({ method: 'POST', url: apiName, headers: headers, params: params }).then(function (response) {
             console.log(response);
             callback(response)
         }, function (error) {
-            console.log('err');
+            // console.log('err');
             console.log(error.data.error);
             callback(error)
         });
     }
 
-    this.isEmptyObject = function(obj) {
+    this.isEmptyObject = function (obj) {
         return (obj && (Object.keys(obj).length === 0));
     }
 
@@ -91,7 +93,8 @@ angular.module("angularJsApp").service('sellerHomeService', function ($filter, $
 
     }
 
-    function isEmailValid(x) {
+    this.isEmailValid = function(x) {
+        console.log('xxxxxxxxxxxxxxxx')
         var atpos = x.indexOf("@");
         var dotpos = x.lastIndexOf(".");
         if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
@@ -105,7 +108,7 @@ angular.module("angularJsApp").service('sellerHomeService', function ($filter, $
     this.checkEmail = function () {
         var errorDiv = $("#error_msg");
         if ($('#sign_email').val().trim() != "") {
-            if (!isEmailValid($('#sign_email').val())) {
+            if (!this.isEmailValid($('#sign_email').val())) {
                 errorDiv.html("<div class='alert alert-danger'>Please Enter Valid Email.</div>");
                 return;
             } else {
@@ -151,5 +154,120 @@ angular.module("angularJsApp").service('sellerHomeService', function ($filter, $
         }
     }
 
+    this.openAlert = function (alertData) {
+		console.log("call to open popup");
+		console.log(alertData);
+		showajaxerror(alertData);
+	}
+
+    this.statesList = [{
+		"key": "AN",
+		"name": "Andaman and Nicobar Islands"
+	}, {
+		"key": "AP",
+		"name": "Andhra Pradesh"
+	}, {
+		"key": "AR",
+		"name": "Arunachal Pradesh"
+	}, {
+		"key": "AS",
+		"name": "Assam"
+	}, {
+		"key": "BR",
+		"name": "Bihar"
+	}, {
+		"key": "CG",
+		"name": "Chandigarh"
+	}, {
+		"key": "CH",
+		"name": "Chhattisgarh"
+	}, {
+		"key": "DH",
+		"name": "Dadra and Nagar Haveli"
+	}, {
+		"key": "DD",
+		"name": "Daman and Diu"
+	}, {
+		"key": "DL",
+		"name": "Delhi"
+	}, {
+		"key": "GA",
+		"name": "Goa"
+	}, {
+		"key": "GJ",
+		"name": "Gujarat"
+	}, {
+		"key": "HR",
+		"name": "Haryana"
+	}, {
+		"key": "HP",
+		"name": "Himachal Pradesh"
+	}, {
+		"key": "JK",
+		"name": "Jammu and Kashmir"
+	}, {
+		"key": "JH",
+		"name": "Jharkhand"
+	}, {
+		"key": "KA",
+		"name": "Karnataka"
+	}, {
+		"key": "KL",
+		"name": "Kerala"
+	}, {
+		"key": "LD",
+		"name": "Lakshadweep"
+	}, {
+		"key": "MP",
+		"name": "Madhya Pradesh"
+	}, {
+		"key": "MH",
+		"name": "Maharashtra"
+	}, {
+		"key": "MN",
+		"name": "Manipur"
+	}, {
+		"key": "ML",
+		"name": "Meghalaya"
+	}, {
+		"key": "MZ",
+		"name": "Mizoram"
+	}, {
+		"key": "NL",
+		"name": "Nagaland"
+	}, {
+		"key": "OR",
+		"name": "Odisha"
+	}, {
+		"key": "PY",
+		"name": "Puducherry"
+	}, {
+		"key": "PB",
+		"name": "Punjab"
+	}, {
+		"key": "RJ",
+		"name": "Rajasthan"
+	}, {
+		"key": "SK",
+		"name": "Sikkim"
+	}, {
+		"key": "TN",
+		"name": "Tamil Nadu"
+	}, {
+		"key": "TS",
+		"name": "Telangana"
+	}, {
+		"key": "TR",
+		"name": "Tripura"
+	}, {
+		"key": "UK",
+		"name": "Uttar Pradesh"
+	}, {
+		"key": "UP",
+		"name": "Uttarakhand"
+	}, {
+		"key": "WB",
+		"name": "West Bengal"
+	}];
     return this;
 })

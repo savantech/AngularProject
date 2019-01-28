@@ -4,15 +4,14 @@ angular.module("angularJsApp").controller('adminProperties', function ($state, s
     $scope.loadStatus = false;
     $scope.init = function () {
         $scope.propertiesList = null;
-        $http({
-            method: 'POST',
-            url: '/capitallever/api/system/properties/list',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            data: ''
-        }).then(function (response) {
-            $scope.propertiesList = response.data;
-        }, function (error) {
-            $scope.propertiesList = [];
+        $scope.sellerHomeService.makePostServiceCall('api/system/properties/list', '' , (response)=>{
+            console.log(response);
+            if(!response.data.error){
+                $scope.propertiesList = response.data;
+            }else{
+                $scope.sellerHomeService.openAlert({ alertMsg: response.data.error, alertApi: '' });
+                $scope.propertiesList = [];
+            }
         });
     }
 

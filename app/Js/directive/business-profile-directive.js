@@ -17,10 +17,17 @@ angular.module("angularJsApp").directive('businessProfile', function () {
 
 			$scope.init = function () {
 				if ($scope.role == $scope.sellerHomeService.adminRole) {
-					$scope.sellerHomeService.makeGetServiceCall("/capitallever/api/user/list_all_users?start=0&count=-1").then(function (response) {
-						$scope.listOfUser = response.data;
-					}, function (error) {
-						// $scope.sellerHomeService.openAlert({ alertMsg: error.data.error, alertApi: error.config.url });
+					var param = {
+						'start': 0,
+						'count': -1
+					};
+					$scope.sellerHomeService.makeGetServiceCall("api/user/list_all_users",param ,(response) => {
+						console.log(response);
+						if(!response.data.error){
+							$scope.listOfUser = response.data;
+						}else{
+							$scope.sellerHomeService.openAlert({ alertMsg: response.data.error, alertApi: '' });
+						}
 					});
 				}
 			}

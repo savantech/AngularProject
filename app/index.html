@@ -41,10 +41,26 @@
   <script src="js/directive/business-type-directive.js"></script>
   <script src="js/directive/fi-business-type-directive.js"></script>
   <script src="js/directive/user-profile-directive.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#ajaxErrorDiv").dialog({
+        autoOpen: false,
+        modal: true,
+        zIndex: -1,
+        width: 500
+      });
+    });
+    function showajaxerror(alertData) {
+      $("#ajaxErrorDiv").html('<b>' + alertData.alertMsg + '</b>');
+      $("#ajaxErrorDiv").dialog("open");
+    }
+  </script>
 </head>
 
 <body>
   <ui-view></ui-view>
+  <div id="ajaxErrorDiv" title="Error" style="display:none;">
+    </div>
 </body>
 
 </html>
